@@ -8,7 +8,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -39,7 +38,7 @@ class PostController extends Controller
      * @param PostRequest $request
      * @return RedirectResponse
      */
-    public function store(PostRequest $request)
+    public function store(PostRequest $request): RedirectResponse
     {
         Post::create($request->validated());
         return redirect()->route('posts.index')->with('success', 'Данные успешно добавлены');
@@ -74,7 +73,7 @@ class PostController extends Controller
      * @param Post $post
      * @return RedirectResponse
      */
-    public function update(PostRequest $request, Post $post)
+    public function update(PostRequest $request, Post $post): RedirectResponse
     {
         $post->update($request->validated());
         return redirect()->route('posts.index')->with('success', 'Данные успешно обновлены');
@@ -86,7 +85,7 @@ class PostController extends Controller
      * @param Post $post
      * @return RedirectResponse
      */
-    public function destroy(Post $post)
+    public function destroy(Post $post): RedirectResponse
     {
         $post->delete();
         return redirect()->route('posts.index')->with('success', 'Данные успешно удалены');

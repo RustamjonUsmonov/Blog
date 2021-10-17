@@ -6,13 +6,13 @@
         </x-slot>
     </x-sidebar.link>
 
-    <x-sidebar.dropdown title="Profile" :active="request()->routeIs('dashboard')">
+    <x-sidebar.dropdown title="Posts" :active="request()->routeIs('posts*')">
         <x-slot name="icon">
             <x-heroicon-o-view-grid class="flex-shrink-0 w-6 h-6" aria-hidden="true"/>
         </x-slot>
 
-        <x-sidebar.sublink title="First" href="{{ route('dashboard') }}"
-                           :active="request()->routeIs('dashboard')"/>
+        <x-sidebar.sublink title="Posts list" href="{{ route('posts.index') }}"
+                           :active="request()->routeIs('posts.index')"/>
     </x-sidebar.dropdown>
 
 
