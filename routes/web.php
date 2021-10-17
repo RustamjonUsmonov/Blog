@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\{CategoryController, CommentController, PostController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,22 +18,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
 // useless routes
 // Just to demo sidebar dropdown links active states.
-Route::get('/buttons/text', function () {
-    return view('buttons-showcase.text');
-})->middleware(['auth'])->name('buttons.text');
+Route::middleware('auth')->group(function () {
+    Route::view('/dashboard', 'dashboard')->name('dashboard');
 
-Route::get('/buttons/icon', function () {
-    return view('buttons-showcase.icon');
-})->middleware(['auth'])->name('buttons.icon');
+    Route::view('/buttons/text', 'buttons-showcase.text')->name('buttons.text');
+    Route::view('/buttons/icon', 'buttons-showcase.icon')->name('buttons.icon');
+    Route::view('/buttons/text-icon', 'buttons-showcase.text-icon')->name('buttons.text-icon');
 
-Route::get('/buttons/text-icon', function () {
-    return view('buttons-showcase.text-icon');
-})->middleware(['auth'])->name('buttons.text-icon');
-
+    Route::resource('posts', PostController::class);
+    Route::resource('categories', CategoryController::class);
+    Route::resource('comments', CommentController::class);
+});
 require __DIR__ . '/auth.php';
