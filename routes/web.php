@@ -18,11 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// useless routes
-// Just to demo sidebar dropdown links active states.
 Route::middleware('auth')->group(function () {
     Route::view('/dashboard', 'dashboard')->name('dashboard');
-
+// useless routes
+// Just to demo sidebar dropdown links active states.
     Route::view('/buttons/text', 'buttons-showcase.text')->name('buttons.text');
     Route::view('/buttons/icon', 'buttons-showcase.icon')->name('buttons.icon');
     Route::view('/buttons/text-icon', 'buttons-showcase.text-icon')->name('buttons.text-icon');

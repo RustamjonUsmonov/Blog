@@ -27,7 +27,6 @@ class PostRequest extends FormRequest
             'avatar' => ['nullable'],
             'name' => ['required', 'string', 'max:255'],
             'description' => ['required', 'string', 'max:255'],
-            'views' => ['required', 'numeric'],
             'category_id' => ['required'],
             'user_id' => ['required']
         ];

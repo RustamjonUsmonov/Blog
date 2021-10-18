@@ -28,13 +28,13 @@
                                     </div>
                                 </div>
                                 <div class="flex flex-row justify-between flex-1 p-6 bg-white">
-                                    <x-button class="bg-yellow-500 hover:bg-yellow-600"><a
+                                    <x-button variant="warning"><a
                                             href="{{route('categories.edit',$category->id)}}">{{__('Edit')}}</a>
                                     </x-button>
                                     <form action="{{ route('categories.destroy', $category->id) }}" method="POST">
                                         @method('DELETE')
                                         @csrf
-                                        <x-button class="bg-red-700 hover:bg-red-600">{{__('Delete')}}</x-button>
+                                        <x-button variant="danger">{{__('Delete')}}</x-button>
                                     </form>
                                 </div>
                             </div>

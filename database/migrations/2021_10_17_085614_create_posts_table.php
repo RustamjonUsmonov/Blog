@@ -18,7 +18,7 @@ class CreatePostsTable extends Migration
             $table->string('avatar')->nullable();
             $table->string('name');
             $table->text('description');
-            $table->integer('views');
+            $table->integer('views')->default(0);
             $table->foreignId('category_id');
             $table->foreignId('user_id');
             $table->softDeletes();
